@@ -8,13 +8,18 @@ Something like:
 
 Based upon: https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/
 
+## No Patience Modifications
+* Added support for use with staging servers
+* Added default paths that make more sense in docker-compose
 
-## Why use it?
+### Considerations
+**To use LE staging mode**
+1. Uncomment the `ACME_CA_URI` line in the `.env` file
+2. Set Cloudflare's Crypto settings to `full`
 
-Using this set up you will be able start a production environment in a few seconds. For each new web project simply start the containers with the option `-e VIRTUAL_HOST=your.domain.com` and you will be ready to go. If you want to use SSL (Let's Encrypt) just add the tag `-e LETSENCRYPT_HOST=your.domain.com`. Done!
-
-Easy and trustworthy!
-
+**To use LE production mode**
+1. Comment the `ACME_CA_URI` line in the `.env` file
+2. Set Cloudflare's Crypto settings to `full (strict)`
 
 ## Prerequisites
 
@@ -214,27 +219,3 @@ Or simply run:
 ```bash
 docker stop test-web && docker rm test-web 
 ```
-
-## Production Environment using Web Proxy and Wordpress
-
-1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
-2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
-3. [docker-nextcloud-letsencrypt](https://github.com/evertramos/docker-nextcloud-letsencrypt)
-
-In this repo you will find a docker-compose file to start a production environment for a new wordpress site.
-
-## Credits
-
-Without the repositories below this webproxy wouldn´t be possible.
-
-Credits goes to:
-- nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
-- docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
-- docker-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
-
-
-### Special thanks to:
-
-- [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
-- [@fracz](https://github.com/fracz) - Many contributions!
-
