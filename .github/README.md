@@ -6,6 +6,8 @@ Something like:
 
 ![Web Proxy environment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
 
+Based upon: https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/
+
 
 ## Why use it?
 
